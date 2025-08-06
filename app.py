@@ -4,7 +4,7 @@ from streamlit_webrtc import webrtc_streamer, WebRtcMode
 from ultralytics import YOLO
 
 player_state = st.session_state.get("player")
-busy = player_state and player_state.state.playing or player_state.state.signalling
+busy = bool(player_state and (player_state.state.playing or player_state.state.signalling))
 model_name = st.selectbox(
     "Select YOLO model",
     options=["yolo11n.pt", "yolo11s.pt", "yolo11m.pt", "yolov8n.pt", "yolov8s.pt", "yolov8m.pt"],
