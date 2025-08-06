@@ -3,8 +3,16 @@ from queue import Queue
 from streamlit_webrtc import webrtc_streamer, WebRtcMode
 from ultralytics import YOLO
 
-with st.spinner("Loading YOLO model..."):
-    model = YOLO("yolo11n.pt")
+player_state = st.session_state.get("player")
+busy = player_state and player_state.state.playing or player_state.state.signalling
+model_name = st.selectbox(
+    "Select YOLO model",
+    options=["yolo11n.pt", "yolo11s.pt", "yolo11m.pt", "yolov8n.pt", "yolov8s.pt", "yolov8m.pt"],
+    disabled=busy
+)
+
+with st.spinner(f"Loading model {model_name}..."):
+    model = YOLO(model_name)
 
 info_queue = Queue()
 
@@ -20,7 +28,7 @@ def video_frame_callback(input_frame):
     return output_frame
 
 ctx = webrtc_streamer(
-    key="yolo",
+    key="player",
     mode=WebRtcMode.SENDRECV,
     video_frame_callback=video_frame_callback,
     media_stream_constraints={"video": True, "audio": False}
