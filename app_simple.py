@@ -3,7 +3,7 @@ from streamlit_webrtc import webrtc_streamer, WebRtcMode
 from ultralytics import YOLO
 
 with st.spinner("Loading YOLO model..."):
-    model = YOLO("yolov8n.pt")
+    model = YOLO("yolo11n.pt")
 
 def video_frame_callback(input_frame):
     img = input_frame.to_ndarray(format="bgr24")
