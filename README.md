@@ -2,7 +2,7 @@
 
 Streamlit sample apps for real-time YOLO object detection using [Ultralytics YOLO](https://docs.ultralytics.com/).
 
-|    |   |
+| Samples   |   |
 | --- | --- |
 | [`app_simple.py`](./app_simple.py) (~20 LoC) | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ultralytics-realtime-simple.streamlit.app/) |
 | [`app.py`](./app.py) (~50 LoC) | [![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ultralytics-realtime.streamlit.app/) |
