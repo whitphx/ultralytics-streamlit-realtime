@@ -5,7 +5,13 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "opencv-python-headless>=4.12.0.88",
     "streamlit>=1.48.0",
     "streamlit-webrtc>=0.63.3",
     "ultralytics>=8.3.174",
+]
+
+[tool.uv]
+override-dependencies = [
+  "opencv-python; python_version < '0'" # Remove opencv-python and install opencv-python-headless explicitly above, https://github.com/ultralytics/ultralytics/issues/20385#issuecomment-3004932997
 ]
